@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 
 /* data */
-import useFetch from "../hooks/useFetch";
-
+/* import useFetch from "../hooks/useFetch";*/
+import { cameras } from "../dataLocal";
 /* componets */
 import ProductSlider from "../components/ProductSlider";
 
 const LatestProducts = () => {
-  const { data } = useFetch("/products?populate=*&filters[isNew]=true");
-
+  /*   const { data } = useFetch("/products?populate=*&filters[isNew]=true");*/
+  const data = cameras.filter((camera) => camera.isNew === true);
   return (
     <div className="mb-16">
       <div className="container mx-auto">

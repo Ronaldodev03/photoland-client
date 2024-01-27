@@ -2,17 +2,17 @@ import { IoArrowForward, IoCartOutline, IoClose } from "react-icons/io5";
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
 import CartItem from "./CartItem";
-import { loadStripe } from "@stripe/stripe-js";
-import { request } from "../request";
+//import { loadStripe } from "@stripe/stripe-js";
+//import { request } from "../request";
 
 const Cart = () => {
   const { setIsOpen, cart, total, clearCart } = useContext(CartContext);
 
-  const stripePromise = loadStripe(
+  /*  const stripePromise = loadStripe(
     "pk_test_51OLZ6yJOqwdGZRkUfDfpDIgB2fL6677pZYfzGJCe6YWuxmUtvebCeaUeVju5OdHsznpgAkyBz4H8Ko159kgsbrRR00ZliqWj1A"
-  );
+  ); */
 
-  const handlePayment = async () => {
+  /*  const handlePayment = async () => {
     try {
       const stripe = await stripePromise;
       const res = await request.post("/orders", {
@@ -33,7 +33,7 @@ const Cart = () => {
     } catch (error) {
       console.error("Error handling payment:", error);
     }
-  };
+  }; */
 
   return (
     <div className=" w-full h-full px-4 text-white">
@@ -77,7 +77,8 @@ const Cart = () => {
               Clear cart
             </button>
             <button
-              onClick={handlePayment}
+              // onClick={handlePayment}
+              onClick={() => window.location.reload()}
               className=" btn btn-accent hover:bg-accent-hover text-primary flex-1 px-2 gap-x-2"
             >
               Checkout

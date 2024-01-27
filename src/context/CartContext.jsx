@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useLocalStorage("cartPhotoland", []);
   const [itemAmount, setItemAmount] = useState(0);
   const [amount, setAmount] = useState(0);
   const [total, setTotal] = useState(0);
@@ -21,7 +22,7 @@ const CartProvider = ({ children }) => {
   /* cart total */
   useEffect(() => {
     const total = cart.reduce((a, c) => {
-      return a + c.attributes.price * c.amount;
+      return a + /* c.attributes.price */ c.price * c.amount;
     }, 0);
     setTotal(total);
   }, [cart]);
